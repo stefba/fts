@@ -6,6 +6,15 @@ import (
 	"path/filepath"
 )
 
+type file struct {
+	Path string
+	Byte []byte
+}
+
+func (f *file) String() string {
+	return string(f.Byte)
+}
+
 func readFiles(root string) ([]*file, error) {
 	files := []*file{}
 	err := filepath.WalkDir(root, func(path string, d fs.DirEntry, err error) error {
